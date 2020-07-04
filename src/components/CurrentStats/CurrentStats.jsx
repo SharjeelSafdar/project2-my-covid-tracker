@@ -14,13 +14,13 @@ const CurrentStats = () => {
         <Doughnut 
             width={150}
             data={{
-                labels: [ 'Active', 'Recovered', 'Deaths' ],
+                labels: [ 'Recovered', 'Active', 'Deaths' ],
                 datasets: [{
-                    data: [ data.active, data.recovered, data.deaths ],
+                    data: [ data.recovered, data.active, data.deaths ],
                     backgroundColor: [
-                    'rgba(0, 0, 255, 0.5)',
-                    'rgba(0, 255, 0, 0.5)',
-                    'rgba(255, 0, 0, 0.5)'
+                        'rgba(0, 255, 0, 0.5)',
+                        'rgba(0, 0, 255, 0.5)',
+                        'rgba(255, 0, 0, 0.5)'
                     ],
                 }]
             }}
