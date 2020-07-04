@@ -1,0 +1,13 @@
+.container {
+    margin: 20px 0 !important;
+}
+
+@media (max-width: 770px) {
+    .chart {
+        margin: 20px 0 !important;
+    }
+}
+
+.caption {
+    text-align: center;
+}

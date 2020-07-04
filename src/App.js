@@ -1,24 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// Libraries
+import React, { Suspense } from 'react';
+
+// Styles
+import styles from './App.module.css'
+
+// Component Imports
+import { NavBar, Loading, CountryPicker, Cards, CurrentStats, History } from './components/components'
+import { GlobalProvider } from './context/context';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.container}>
+      {/* <Suspense fallback={<Loading />}> */}
+        <NavBar />
+        {/* <Loading /> */}
+        <GlobalProvider>
+          <CountryPicker />
+          <Cards />
+          <CurrentStats />
+          <History />
+        </GlobalProvider>
+      {/* </Suspense> */}
     </div>
   );
 }
