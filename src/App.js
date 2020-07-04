@@ -1,11 +1,11 @@
 // Libraries
-import React, { Suspense } from 'react';
+import React/*, { Suspense }*/ from 'react';
 
 // Styles
 import styles from './App.module.css'
 
 // Component Imports
-import { NavBar, Loading, CountryPicker, Cards, CurrentStats, History } from './components/components'
+import { NavBar/*, Loading*/, CountryPicker, Cards, CurrentStats, History } from './components/components'
 import { GlobalProvider } from './context/context';
 
 function App() {
