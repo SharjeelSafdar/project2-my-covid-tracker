@@ -5,49 +5,48 @@ export const fetchCountries = async () => {
         return result.map((item) => ({
             name: item.country,
             code: item.countryInfo.iso2,
-            flag: item.countryInfo.flag,
         }));
     } catch (error) {
         console.log(error);
     }
 }
 
-export const fetchCurrentData = async (countryName) => {
+export const fetchCurrentData = async (countryCode) => {
     try {
         let url = '';
-        if (countryName === 'all')
+        if (countryCode === 'all')
             url = 'https://disease.sh/v3/covid-19/all?yesterday=false&allowNull=false';
         else
-            url = `https://disease.sh/v3/covid-19/countries/${countryName}?yesterday=false&strict=true&allowNull=false`;
-        const response = await fetch(url);
+            url = `https://disease.sh/v3/covid-19/countries/${countryCode}?yesterday=false&strict=true&allowNull=false`;
+        const response = await (await fetch(url)).json();
         const { 
-            updated, //countryInfo,//: { flag },
+            country, updated,
             cases, todayCases, 
             active, critical, 
             recovered, todayRecovered,
             deaths, todayDeaths,
-        } = await response.json();
+        } = response;
         return { 
-            updated, //countryInfo, // flag,
+            country, updated,
             cases, todayCases, 
             active, critical, 
             recovered, todayRecovered,
-            deaths, todayDeaths, 
+            deaths, todayDeaths,
         };
     } catch (error) {
         console.log(error);
     }
 }
 
-export const fetchHistoryData = async (countryName) => {
+export const fetchHistoryData = async (countryCode) => {
     try {
         let url = '';
         let response = null;
-        if (countryName === 'all') {
+        if (countryCode === 'all') {
             url = 'https://disease.sh/v3/covid-19/historical/all?lastdays=all';
             response = await (await fetch(url)).json();
         } else {
-            url = `https://disease.sh/v3/covid-19/historical/${countryName}?lastdays=all`;
+            url = `https://disease.sh/v3/covid-19/historical/${countryCode}?lastdays=all`;
             response = await (await fetch(url)).json();
             response = response.timeline;
         }
@@ -63,5 +62,6 @@ export const fetchHistoryData = async (countryName) => {
 
     } catch (error) {
         console.log(error);
+        return { message: 'data not available'}
     }
 }

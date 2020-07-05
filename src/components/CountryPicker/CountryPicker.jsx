@@ -14,15 +14,16 @@ const CountryPicker = () => {
             setFetchedCountries( await fetchCountries() );
         }
         fetchData();
-      }, []);
+    }, []);
+
     return (
         fetchedCountries.length ?
         <FormControl className={styles.formControl}>
-            <NativeSelect defaultValue="all" onChange={(e) => setCountrySelected(e.target.value)}>
-                <option value="all">Global</option>
-                {fetchedCountries.map((country, i) => (
-                    <option key={i} value={country.name}>{country.name}</option>
-                ))}
+            <NativeSelect defaultValue={{name: "all", code: 'all'}} onChange={(e) => setCountrySelected(e.target.value)}>
+                <option value='all'>Global</option>
+                {fetchedCountries.map((country, i) => {
+                    return <option key={i} value={country.code}>{country.name}</option>
+                })}
             </NativeSelect>
         </FormControl>
         : null

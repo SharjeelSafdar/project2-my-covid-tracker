@@ -6,10 +6,14 @@ import { fetchHistoryData } from '../../api/fetchData';
 import { globalContext } from './../../context/context';
 
 import styles from './History.module.css';
+import earth from '../../images/earth.png';
 
 const History = () => {
-    const { countrySelected } = useContext(globalContext);
+    const { countrySelected, data } = useContext(globalContext);
     const [ historyData, setHistoryData ] = useState({});
+    const flag = countrySelected === 'all'
+        ? earth
+        : `https://disease.sh/assets/img/flags/${countrySelected.toLowerCase()}.png`
     useEffect(() => {
         const fetchData = async () => {
             setHistoryData( await fetchHistoryData(countrySelected) );
@@ -52,13 +56,21 @@ const History = () => {
     );
 
     return (
-        !historyData.dates ? null :  
-        <div className={styles.container}>
-            <Typography variant="h4" align="center" className={styles.heading}>
-                {`Historical Data for ${countrySelected !== 'all' ? countrySelected : 'the Globe'}`}
-            </Typography>
-            {lineChart}
-        </div>
+        !historyData.dates 
+        ? 
+            <div>
+                <Typography variant="h4" align="center" className={styles.heading}>
+                    {`Historical Data for ${data.country} is not available.`}
+                </Typography>
+            </div> 
+        :  
+            <div className={styles.container}>
+                <Typography variant="h4" align="center" className={styles.heading}>
+                    {`Historical Data for ${countrySelected !== 'all' ? data.country : 'the Globe'}`}
+                    <img src={flag} alt="Country Flag" className={styles.flag}/>
+                </Typography>
+                {lineChart}
+            </div>
     )
 }
 
