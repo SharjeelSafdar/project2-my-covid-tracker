@@ -1,30 +1,20 @@
-import React, { useEffect, useContext } from 'react';
+import React from 'react';
 import { Grid, Card, Typography, CardContent } from '@material-ui/core';
 import CountUp from 'react-countup';
 import cx from 'classnames';
 
-import { fetchCurrentData } from '../../api/fetchData';
-import { globalContext } from './../../context/context';
 import styles from './Cards.module.css';
-import earth from '../../images/earth.png';
 
-const Cards = () => {
-    const { countrySelected, data, setData } = useContext(globalContext);
-    const flag = countrySelected === 'all'
-        ? earth
-        : `https://disease.sh/assets/img/flags/${countrySelected.toLowerCase()}.png`
-    useEffect(() => {
-        const fetchData = async () => {
-            setData( await fetchCurrentData(countrySelected) );
-        }
-        fetchData();
-      }, [ countrySelected, setData ]);
+const Cards = ({ currentData, country, flag }) => {
+    const data = currentData();
+    const countryFlag = flag();
+    console.log(countryFlag);
     return (
         !data.cases ? null :
         <div className={styles.container}>
             <Typography variant="h4" align="center" className={styles.heading}>
-                {`Current State in ${countrySelected !== 'all' ? data.country : 'the Globe'}`}
-                <img src={flag} alt="Country Flag" className={styles.flag}/>
+                {`Current State in ${country}`}
+                <img src={countryFlag} alt="Country Flag" className={styles.flag}/>
             </Typography>
             <Typography variant="h6" color="textSecondary" align="center" className={styles.heading2}>
                 {`Last Updated: ${new Date(data.updated).toDateString()}`}

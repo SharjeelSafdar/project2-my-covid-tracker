@@ -1,16 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { Grid, Typography } from '@material-ui/core';
-import { globalContext } from './../../context/context';
 
 import styles from './CurrentStats.module.css';
 
-const CurrentStats = () => {
-    const { data } = useContext(globalContext);
+const CurrentStats = ({ currentData }) => {
+    const data = currentData();
+
     let recoveryRate = (data.recovered / (data.cases - data.active) * 100).toFixed(2);
     let deathRate = (data.deaths / (data.cases - data.active) * 100).toFixed(2);
+
     const statsDoughnut = (
-        !data.cases ? null :
         <Doughnut 
             width={150}
             data={{
@@ -35,7 +35,6 @@ const CurrentStats = () => {
     );
 
     const ratesDoughnut = (
-        !data.cases ? null :
         <Doughnut 
             width={150}
             data={{

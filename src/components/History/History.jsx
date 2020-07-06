@@ -1,28 +1,14 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React from 'react';
 import { Line } from 'react-chartjs-2';
 import { Typography } from '@material-ui/core';
 
-import { fetchHistoryData } from '../../api/fetchData';
-import { globalContext } from './../../context/context';
-
 import styles from './History.module.css';
-import earth from '../../images/earth.png';
 
-const History = () => {
-    const { countrySelected, data } = useContext(globalContext);
-    const [ historyData, setHistoryData ] = useState({});
-    const flag = countrySelected === 'all'
-        ? earth
-        : `https://disease.sh/assets/img/flags/${countrySelected.toLowerCase()}.png`
-    useEffect(() => {
-        const fetchData = async () => {
-            setHistoryData( await fetchHistoryData(countrySelected) );
-        }
-        fetchData();
-    }, [ countrySelected ]);
+const History = ({ history, country, flag }) => {
+    const historyData = history();
+    const countryFlag = flag();
 
     const lineChart = (
-        !historyData.dates ? null :
         <Line 
             data={{
                 labels: historyData.dates,
@@ -60,14 +46,14 @@ const History = () => {
         ? 
             <div>
                 <Typography variant="h4" align="center" className={styles.heading}>
-                    {`Historical Data for ${data.country} is not available.`}
+                    {`Historical Data for ${country} is not available.`}
                 </Typography>
             </div> 
         :  
             <div className={styles.container}>
                 <Typography variant="h4" align="center" className={styles.heading}>
-                    {`Historical Data for ${countrySelected !== 'all' ? data.country : 'the Globe'}`}
-                    <img src={flag} alt="Country Flag" className={styles.flag}/>
+                    {`Historical Data for ${country}`}
+                    <img src={countryFlag} alt="Country Flag" className={styles.flag}/>
                 </Typography>
                 {lineChart}
             </div>

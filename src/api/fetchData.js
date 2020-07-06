@@ -1,3 +1,6 @@
+import earth from '../images/earth.png';
+
+
 export const fetchCountries = async () => {
     try {
         let response = await fetch('https://disease.sh/v3/covid-19/countries?yesterday=false');
@@ -63,5 +66,17 @@ export const fetchHistoryData = async (countryCode) => {
     } catch (error) {
         console.log(error);
         return { message: 'data not available'}
+    }
+}
+
+export const fetchFlag = async (countryCode) => {
+    try {
+        console.log(earth);
+        console.log(`https://disease.sh/assets/img/flags/${countryCode.toLowerCase()}.png`);
+        return (countryCode === 'all')
+            ? earth
+            : `https://disease.sh/assets/img/flags/${countryCode.toLowerCase()}.png`
+    } catch (error) {
+        console.log(error);
     }
 }
