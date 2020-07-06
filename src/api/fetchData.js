@@ -71,8 +71,6 @@ export const fetchHistoryData = async (countryCode) => {
 
 export const fetchFlag = async (countryCode) => {
     try {
-        console.log(earth);
-        console.log(`https://disease.sh/assets/img/flags/${countryCode.toLowerCase()}.png`);
         return (countryCode === 'all')
             ? earth
             : `https://disease.sh/assets/img/flags/${countryCode.toLowerCase()}.png`

@@ -8,7 +8,7 @@ import styles from './Cards.module.css';
 const Cards = ({ currentData, country, flag }) => {
     const data = currentData();
     const countryFlag = flag();
-    console.log(countryFlag);
+
     return (
         !data.cases ? null :
         <div className={styles.container}>

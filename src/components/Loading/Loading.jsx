@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
-import corona from '../../images/corona.png';
+import corona from '../../images/coronaLoading.png';
 import styles from './Loading.module.css';
 
 const Loading = () => {

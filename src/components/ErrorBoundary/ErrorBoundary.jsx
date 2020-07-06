@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Typography } from '@material-ui/core';
-import corona from '../../images/corona.png';
+import corona from '../../images/coronaError.png';
 import styles from './ErrorBoundary.module.css';
 
 class ErrorBoundary extends Component {
