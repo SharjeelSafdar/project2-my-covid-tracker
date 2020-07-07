@@ -11,7 +11,7 @@ const CountryPicker = ({ countries, setSelectedCountry, fetchNewCurrentData, fet
         if (index === 'all') {
             fetchNewCurrentData('all');
             fetchNewHistoryData('all');
-            setSelectedCountry({ name: 'the Globe', code: 'all' });
+            setSelectedCountry({ name: 'all Countries', code: 'all' });
         } else {
             fetchNewCurrentData(fetchedCountries[index].code);
             fetchNewHistoryData(fetchedCountries[index].code);

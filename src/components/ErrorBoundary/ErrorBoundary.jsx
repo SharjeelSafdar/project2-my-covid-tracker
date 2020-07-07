@@ -1,7 +1,4 @@
-import React, { Component } from 'react';
-import { Typography } from '@material-ui/core';
-import corona from '../../images/coronaError.png';
-import styles from './ErrorBoundary.module.css';
+import { Component } from 'react';
 
 class ErrorBoundary extends Component {
     constructor(props) {
@@ -22,12 +19,7 @@ class ErrorBoundary extends Component {
     render() {
       if (this.state.hasError) {
         // You can render any custom fallback UI
-        return (
-            <div className={styles.container}>
-                <img src={corona} alt="" className={styles.coronaImage} />
-                <Typography variant="h5">Oops! Something went wrong ...</Typography>
-            </div>
-        );
+        return this.props.fallback
       }
   
       return this.props.children; 

@@ -8,38 +8,70 @@ const History = ({ history, country, flag }) => {
     const historyData = history();
     const countryFlag = flag();
 
-    const lineChart = (
-        <Line 
-            data={{
-                labels: historyData.dates,
-                datasets: [{
-                    data: historyData.confirmed,
-                    label: 'Confirmed',
-                    borderColor: 'rgb(255, 115, 0)',
-                    backgroundColor: 'rgba(255, 115, 0, 0.1)',
-                    fill: true,
-                }, {
-                    data: historyData.active,
-                    label: 'Active',
-                    borderColor: 'blue',
-                    backgroundColor: 'rgba(0, 0, 255, 0.1)',
-                    fill: true,
-                }, {
-                    data: historyData.recovered,
-                    label: 'Recovered',
-                    borderColor: 'green',
-                    backgroundColor: 'rgba(0, 255, 0, 0.1)',
-                    fill: true,
-                }, {
-                    data: historyData.deaths,
-                    label: 'Deaths',
-                    borderColor: 'red',
-                    backgroundColor: 'rgba(255, 0, 0, 0.1)',
-                    fill: true,
-                }],
-            }}
-        />
-    );
+    const data={
+        labels: historyData.dates,
+        datasets: [{
+            data: historyData.confirmed,
+            label: 'Confirmed',
+            borderColor: 'rgb(255, 115, 0)',
+            backgroundColor: 'rgba(255, 115, 0, 0.1)',
+            fill: true,
+            pointRadius: 1,
+            pointHoverRadius: 5,
+            pointBorderWidth: 1,
+            pointHoverBorderWidth: 2,
+            pointBorderColor: 'rgba(255, 115, 0, 1)',
+            pointHoverBorderColor: 'white',
+            pointBackgroundColor: 'rgba(255, 115, 0, 1)',
+            pointHoverBackgroundColor: 'rgba(255, 115, 0, 1)',
+            pointHitRadius: 10,
+        }, {
+            data: historyData.active,
+            label: 'Active',
+            borderColor: 'blue',
+            backgroundColor: 'rgba(0, 0, 255, 0.1)',
+            fill: true,
+            pointRadius: 1,
+            pointHoverRadius: 5,
+            pointBorderWidth: 1,
+            pointHoverBorderWidth: 2,
+            pointBorderColor: 'blue',
+            pointHoverBorderColor: 'white',
+            pointBackgroundColor: 'blue',
+            pointHoverBackgroundColor: 'blue',
+            pointHitRadius: 10,
+        }, {
+            data: historyData.recovered,
+            label: 'Recovered',
+            borderColor: 'green',
+            backgroundColor: 'rgba(0, 255, 0, 0.1)',
+            fill: true,
+            pointRadius: 1,
+            pointHoverRadius: 5,
+            pointBorderWidth: 1,
+            pointHoverBorderWidth: 2,
+            pointBorderColor: 'green',
+            pointHoverBorderColor: 'white',
+            pointBackgroundColor: 'green',
+            pointHoverBackgroundColor: 'green',
+            pointHitRadius: 10,
+        }, {
+            data: historyData.deaths,
+            label: 'Deaths',
+            borderColor: 'red',
+            backgroundColor: 'rgba(255, 0, 0, 0.1)',
+            fill: true,
+            pointRadius: 1,
+            pointHoverRadius: 5,
+            pointBorderWidth: 1,
+            pointHoverBorderWidth: 2,
+            pointBorderColor: 'red',
+            pointHoverBorderColor: 'white',
+            pointBackgroundColor: 'red',
+            pointHoverBackgroundColor: 'red',
+            pointHitRadius: 10,
+        }],
+    }
 
     return (
         !historyData.dates 
@@ -55,7 +87,7 @@ const History = ({ history, country, flag }) => {
                     {`Historical Data for ${country}`}
                     <img src={countryFlag} alt="Country Flag" className={styles.flag}/>
                 </Typography>
-                {lineChart}
+                <Line data={data} />
             </div>
     )
 }

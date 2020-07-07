@@ -6,10 +6,10 @@ import { useAsyncResource } from 'use-async-resource';
 import styles from './App.module.css'
 
 // Component Imports
-import { NavBar, Loading, ErrorBoundary, CountryPicker, Cards, CurrentStats, History } from './components/components'
+import { NavBar, ErrorBoundary, Error, Loading, CountryPicker, Cards, CurrentStats, History } from './components/components'
 import { fetchCountries, fetchCurrentData, fetchHistoryData, fetchFlag } from './api/fetchData';
 
-const initialCountry = { name: 'the Globe', code: 'all' };
+const initialCountry = { name: 'all Countries', code: 'all' };
 
 function App() {
 	const [ selectedCountry, setSelectedCountry ] = useState(initialCountry);
@@ -20,7 +20,7 @@ function App() {
 	return (
 		<div className={styles.container}>
 			<NavBar />
-			<ErrorBoundary>
+			<ErrorBoundary fallback={<Error />}>
 				<Suspense fallback={<Loading />}>
 					<CountryPicker 
 						countries={countries} 

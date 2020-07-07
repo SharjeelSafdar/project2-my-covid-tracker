@@ -9,6 +9,9 @@ const NavBar = () => {
             <AppBar position="static" color="transparent">
                 <Toolbar>
                     <img src={logo} alt="COVID-19 Logo" className={styles.logo} />
+                    {/* <div class={styles.social}>
+
+                    </div> */}
                 </Toolbar>
             </AppBar>
         </div>
