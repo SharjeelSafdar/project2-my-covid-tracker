@@ -8,6 +8,15 @@ const History = ({ historyData, countryName, flag }) => {
     const history = historyData();
     const countryFlag = flag();
 
+    // If historical data for the country is not available.
+    if (history.message){
+        return (
+            <Typography variant="h4" align="center" className={styles.heading}>
+                {`Historical Data for ${countryName} is not available.`}
+            </Typography>
+        );
+    }
+
     const data={
         labels: history.dates,
         datasets: [{
@@ -94,24 +103,16 @@ const History = ({ historyData, countryName, flag }) => {
     }
 
     return (
-        !history.dates 
-        ? 
-            <div>
-                <Typography variant="h4" align="center" className={styles.heading}>
-                    {`Historical Data for ${countryName} is not available.`}
-                </Typography>
-            </div> 
-        :  
-            <div className={styles.container}>
-                <Typography variant="h4" align="center" className={styles.heading}>
-                    {`Historical Data for ${countryName}`}
-                    <img src={countryFlag} alt="Country Flag" className={styles.flag}/>
-                </Typography>
-                <Line data={data} legend={label} />
-                <Typography variant="subtitle2" color="textSecondary">
-                    * Click legends to show/hide relevant graph.
-                </Typography>
-            </div>
+        <div className={styles.container}>
+            <Typography variant="h4" align="center" className={styles.heading}>
+                {`Historical Data for ${countryName}`}
+                <img src={countryFlag} alt="Country Flag" className={styles.flag}/>
+            </Typography>
+            <Line data={data} legend={label} />
+            <Typography variant="subtitle2" color="textSecondary">
+                * Click legends to show/hide relevant graph.
+            </Typography>
+        </div>
     )
 }
 

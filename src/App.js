@@ -1,6 +1,6 @@
 // Libraries
 import React, { Suspense, useState } from 'react';
-import { useAsyncResource } from 'use-async-resource';
+import { useAsyncResource } from './api/useAsyncResource';
 
 // Styles
 import styles from './App.module.css'
@@ -10,7 +10,7 @@ import { NavBar, ErrorBoundary, Error, Loading, CountryPicker, Cards,
 	CurrentStats, History, Footer } from './components/components'
 import { fetchCountries, fetchCurrentData, fetchHistoryData, fetchFlag } from './api/fetchData';
 
-const initialCountry = { name: 'all Countries', code: 'all' };
+const initialCountry = { name: 'All Countries', code: 'all' };
 
 function App() {
 	const [ selectedCountry, setSelectedCountry ] = useState(initialCountry);
@@ -25,6 +25,7 @@ function App() {
 				<Suspense fallback={<Loading />}>
 					<CountryPicker 
 						countries={countries} 
+						selectedCountry={selectedCountry}
 						setSelectedCountry={setSelectedCountry}
 						fetchNewCurrentData={fetchNewCurrentData} 
 						fetchNewHistoryData={fetchNewHistoryData}

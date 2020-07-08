@@ -1,35 +1,30 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { NativeSelect, FormControl } from '@material-ui/core';
 
 import styles from './CountryPicker.module.css';
 
-const CountryPicker = ({ countries, setSelectedCountry, fetchNewCurrentData, fetchNewHistoryData }) => {
+const CountryPicker = ({ countries, setSelectedCountry, fetchNewCurrentData, fetchNewHistoryData, getNewFlag }) => {
     const fetchedCountries = countries();
-    
-    const changeHandler = (event) => {
-        const index = event.target.value;
-        if (index === 'all') {
-            fetchNewCurrentData('all');
-            fetchNewHistoryData('all');
-            setSelectedCountry({ name: 'all Countries', code: 'all' });
-        } else {
+
+    const changeHandler = useCallback(
+        (event) => {
+            const index = event.target.value;
+            setSelectedCountry(fetchedCountries[index]);
             fetchNewCurrentData(fetchedCountries[index].code);
             fetchNewHistoryData(fetchedCountries[index].code);
-            setSelectedCountry(fetchedCountries[index]);
-        }
-    }
+            getNewFlag(fetchedCountries[index].code);
+        },
+        [ fetchedCountries, setSelectedCountry, fetchNewCurrentData, fetchNewHistoryData, getNewFlag ],
+    );
 
     return (
-        fetchedCountries.length ?
         <FormControl className={styles.formControl}>
-            <NativeSelect defaultValue='all' onChange={changeHandler}>
-                <option value='all'>Global</option>
+            <NativeSelect defaultValue={0} onChange={changeHandler}>
                 {fetchedCountries.map((country, i) => {
                     return <option key={i} value={i}>{country.name}</option>
                 })}
             </NativeSelect>
         </FormControl>
-        : null
     );
 }
 

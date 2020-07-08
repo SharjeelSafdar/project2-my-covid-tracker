@@ -10,7 +10,6 @@ const Cards = ({ currentData, countryName, flag }) => {
     const countryFlag = flag();
 
     return (
-        !data.cases ? null :
         <div className={styles.container}>
             <Typography variant="h4" align="center" className={styles.heading}>
                 {`Current Data for ${countryName}`}

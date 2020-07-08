@@ -3,14 +3,18 @@ import earth from '../images/earth.png';
 
 export const fetchCountries = async () => {
     try {
+        const global = { name: 'All Countries', code: 'all' };
         let response = await fetch('https://disease.sh/v3/covid-19/countries?yesterday=false');
         let result = await response.json();
-        return result.map((item) => ({
+        result = result.map((item) => ({
             name: item.country,
             code: item.countryInfo.iso2,
-        }));
+        }))
+        result.unshift(global);
+        return result;
+        
     } catch (error) {
-        console.log(error);
+        // console.log(error);
     }
 }
 
@@ -37,20 +41,18 @@ export const fetchCurrentData = async (countryCode) => {
             deaths, todayDeaths,
         };
     } catch (error) {
-        console.log(error);
+        // console.log(error);
     }
 }
 
 export const fetchHistoryData = async (countryCode) => {
     try {
-        let url = '';
-        let response = null;
-        if (countryCode === 'all') {
-            url = 'https://disease.sh/v3/covid-19/historical/all?lastdays=all';
-            response = await (await fetch(url)).json();
-        } else {
-            url = `https://disease.sh/v3/covid-19/historical/${countryCode}?lastdays=all`;
-            response = await (await fetch(url)).json();
+        let url = `https://disease.sh/v3/covid-19/historical/${countryCode}?lastdays=all`;
+        let response = await (await fetch(url)).json();
+        if (response.message) {
+            return { message: response.message }
+        }
+        if (countryCode !== 'all') {
             response = response.timeline;
         }
         const dates = Object.keys(response.cases);
@@ -64,8 +66,7 @@ export const fetchHistoryData = async (countryCode) => {
         return { dates, confirmed, recovered, deaths, active };
 
     } catch (error) {
-        console.log(error);
-        return { message: 'data not available'}
+        // console.log(error);
     }
 }
 
@@ -75,6 +76,6 @@ export const fetchFlag = async (countryCode) => {
             ? earth
             : `https://disease.sh/assets/img/flags/${countryCode.toLowerCase()}.png`
     } catch (error) {
-        console.log(error);
+        // console.log(error);
     }
 }
