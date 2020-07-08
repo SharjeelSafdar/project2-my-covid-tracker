@@ -6,7 +6,8 @@ import { useAsyncResource } from 'use-async-resource';
 import styles from './App.module.css'
 
 // Component Imports
-import { NavBar, ErrorBoundary, Error, Loading, CountryPicker, Cards, CurrentStats, History } from './components/components'
+import { NavBar, ErrorBoundary, Error, Loading, CountryPicker, Cards, 
+	CurrentStats, History, Footer } from './components/components'
 import { fetchCountries, fetchCurrentData, fetchHistoryData, fetchFlag } from './api/fetchData';
 
 const initialCountry = { name: 'all Countries', code: 'all' };
@@ -34,6 +35,7 @@ function App() {
 					<History history={historyData} country={selectedCountry.name} flag={flag} />
 				</Suspense>
 			</ErrorBoundary>
+			<Footer />
 		</div>
 	);
 }
