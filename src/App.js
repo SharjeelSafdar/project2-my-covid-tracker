@@ -33,9 +33,9 @@ function App() {
 					<Cards currentData={currentData} country={selectedCountry.name} flag={flag} />
 					<CurrentStats currentData={currentData} />
 					<History history={historyData} country={selectedCountry.name} flag={flag} />
+					<Footer />
 				</Suspense>
 			</ErrorBoundary>
-			<Footer />
 		</div>
 	);
 }
