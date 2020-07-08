@@ -5,7 +5,7 @@ import cx from 'classnames';
 
 import styles from './Cards.module.css';
 
-const Cards = ({ currentData, country, flag }) => {
+const Cards = ({ currentData, countryName, flag }) => {
     const data = currentData();
     const countryFlag = flag();
 
@@ -13,7 +13,7 @@ const Cards = ({ currentData, country, flag }) => {
         !data.cases ? null :
         <div className={styles.container}>
             <Typography variant="h4" align="center" className={styles.heading}>
-                {`Current State in ${country}`}
+                {`Current Data for ${countryName}`}
                 <img src={countryFlag} alt="Country Flag" className={styles.flag}/>
             </Typography>
             <Typography variant="h6" color="textSecondary" align="center" className={styles.heading2}>

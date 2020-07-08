@@ -30,9 +30,9 @@ function App() {
 						fetchNewHistoryData={fetchNewHistoryData}
 						getNewFlag={getNewFlag}
 					/>
-					<Cards currentData={currentData} country={selectedCountry.name} flag={flag} />
+					<Cards currentData={currentData} countryName={selectedCountry.name} flag={flag} />
 					<CurrentStats currentData={currentData} />
-					<History history={historyData} country={selectedCountry.name} flag={flag} />
+					<History historyData={historyData} countryName={selectedCountry.name} flag={flag} />
 					<Footer />
 				</Suspense>
 			</ErrorBoundary>
