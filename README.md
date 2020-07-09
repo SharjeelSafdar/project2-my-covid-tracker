@@ -24,3 +24,6 @@ The following are some of the learning outcomes of this project:
 - Implementing Render-as-You-Fetch approach using [React Suspense](https://reactjs.org/docs/concurrent-mode-suspense.html). Displaying a fallback UI while the data is being fetched.
 - Creating a Suspense compatable [custom hook](https://github.com/SharjeelSafdar/project2-my-covid-tracker/blob/master/src/api/useAsyncResource.js) to fetch data without `useEffect` hook. (The custom hook is inspired by [use-async-resource](https://github.com/andreiduca/use-async-resource) library. But it had some bugs: so, I created my own custom hook to cater my needs.)
 - Creating and using [ErrorBoundary](https://reactjs.org/docs/concurrent-mode-suspense.html) component to catch JS errors in app and show a fallback UI.
+
+### API Used
+[Disease.sh](https://disease.sh/)
