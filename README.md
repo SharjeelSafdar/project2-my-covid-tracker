@@ -1,68 +1,25 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project 2: COVID-19 Tracker
 
-## Available Scripts
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). It was created for submission in Pana Cloud Bootcamp 2020.
 
-In the project directory, you can run:
+### Link to Web App
 
-### `yarn start`
+The web app has been deployed to Surge, and can be accessed [here](https://covid19-tracker-sharjeel.surge.sh/).
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Features
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+The following are some of the features of the app:
+- Shows current number of confirmed cases, active cases, recoveries and deaths.
+- Shows the number of active cases, recoveries and deaths as a doughnut to make more sense of these numbers.
+- Shows the recovery and death rates on another doughnut chart.
+- Shows the history of cases since Jan. 22, 2020.
+- Shows the above visuals for any country the user selects from a drop down menu.
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Learning Outcomes
+The following are some of the learning outcomes of this project:
+- Using [Material UI](https://material-ui.com/) with React to create an interactive UI
+- Using [Chart.js](https://www.chartjs.org/) with [React Chartjs 2](https://www.npmjs.com/package/react-chartjs-2).
+- Customizing chart appearance, labels, onclick events etc.
+- Implementing Render-as-You-Fetch approach using [React Suspense](https://reactjs.org/docs/concurrent-mode-suspense.html). Displaying a fallback UI while the data is being fetched.
+- Creating a Suspense compatable [custom hook](https://github.com/SharjeelSafdar/project2-my-covid-tracker/blob/master/src/api/useAsyncResource.js) to fetch data without `useEffect` hook. (The custom hook inspired by [use-async-resource](https://github.com/andreiduca/use-async-resource). But this library has some bugs. So, I created my own custom hook to cater my needs.)
+- Creating and using [ErrorBoundary](https://reactjs.org/docs/concurrent-mode-suspense.html) component to catch JS errors in app and show a fallback UI.
