@@ -18,6 +18,7 @@ The following are some of the features of the app:
 ### Learning Outcomes
 The following are some of the learning outcomes of this project:
 - Using [Material UI](https://material-ui.com/) with React to create an interactive UI
+- Making the app mobile responsive.
 - Using [Chart.js](https://www.chartjs.org/) with [React Chartjs 2](https://www.npmjs.com/package/react-chartjs-2).
 - Customizing chart appearance, labels, onclick events etc.
 - Implementing Render-as-You-Fetch approach using [React Suspense](https://reactjs.org/docs/concurrent-mode-suspense.html). Displaying a fallback UI while the data is being fetched.
