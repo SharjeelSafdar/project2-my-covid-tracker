@@ -9,34 +9,34 @@ const initializeDataReader = (apiFunction, ...parameters) => {
   
     // call the api function immediately, starting fetching
     const fetchingData = apiFunction(...parameters)
-      .then((response) => {
-        data = response;
-        status = 'done';
-      })
-      .catch((e) => {
-        error = e;
-        status = 'error';
-      });
+		.then((response) => {
+			data = response;
+			status = 'done';
+		})
+		.catch((e) => {
+			error = e;
+			status = 'error';
+		});
   
     // this is the data reader function that will return the data,
     // or throw if it's not ready or has errored
     return () => {
-      if (status === 'pending') {
-        throw fetchingData;
-      } else if (status === 'error') {
-        throw error;
-      }
+		if (status === 'pending') {
+			throw fetchingData;
+		} else if (status === 'error') {
+			throw error;
+		}
   
-      return data;
+		return data;
     }
-  };
+};
 
 export const useAsyncResource = (apiFunction, ...parameters) => {
     const [dataReader, updateDataReader] = useState(() => {
         // lazy initialization, when no parameters are passed
         if (!parameters.length) {
-          // we return an empty data reader function
-          return () => undefined;
+			// we return an empty data reader function
+			return () => undefined;
         }
     
         // eager initialization for api functions that don't accept arguments
