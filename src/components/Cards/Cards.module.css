@@ -6,61 +6,61 @@
 } */
 
 .heading {
-    margin: 1em 0 0 !important;
-    /* padding: 0.5em 2em !important;
+  margin: 1em 0 0 !important;
+  /* padding: 0.5em 2em !important;
     width: fit-content;
     border-bottom: medium solid gray;
     border-radius: 10%; */
 }
 
 .heading2 {
-    margin: 0.5em 0 1em !important;
+  margin: 0.5em 0 1em !important;
 }
 
 .card {
-    margin: 2% !important;
-    /* pointer-events: none; */
-    box-shadow: 2px 2px 10px !important;
+  margin: 2% !important;
+  /* pointer-events: none; */
+  box-shadow: 2px 2px 10px !important;
 }
 
 .confirmed {
-    border-bottom: 5px solid rgba(255, 115, 0, 0.5);
+  border-bottom: 5px solid rgba(255, 115, 0, 0.5);
 }
 
 .confirmed:hover {
-    box-shadow: 2px 2px 10px rgba(255, 115, 0, 0.5) !important;
+  box-shadow: 2px 2px 10px rgba(255, 115, 0, 0.5) !important;
 }
 
 .active {
-    border-bottom: 5px solid rgba(0, 0, 255, 0.5);
+  border-bottom: 5px solid rgba(0, 0, 255, 0.5);
 }
 
 .active:hover {
-    box-shadow: 2px 2px 10px rgba(0, 0, 255, 0.5) !important;
+  box-shadow: 2px 2px 10px rgba(0, 0, 255, 0.5) !important;
 }
 
 .recovered {
-    border-bottom: 5px solid rgba(0, 255, 0, 0.5);
+  border-bottom: 5px solid rgba(0, 255, 0, 0.5);
 }
 
 .recovered:hover {
-    box-shadow: 2px 2px 10px rgba(0, 255, 0, 0.5) !important;
+  box-shadow: 2px 2px 10px rgba(0, 255, 0, 0.5) !important;
 }
 
 .newRecoveries {
-    color: #4caf50 !important;
+  color: #4caf50 !important;
 }
 
 .deaths {
-    border-bottom: 5px solid rgba(255, 0, 0, 0.5);
+  border-bottom: 5px solid rgba(255, 0, 0, 0.5);
 }
 
 .deaths:hover {
-    box-shadow: 2px 2px 10px rgba(255, 0, 0, 0.5) !important;
+  box-shadow: 2px 2px 10px rgba(255, 0, 0, 0.5) !important;
 }
 
 .flag {
-    height: 30px;
-    margin-left: 15px;
-    pointer-events: none;
+  height: 30px;
+  margin-left: 15px;
+  pointer-events: none;
 }

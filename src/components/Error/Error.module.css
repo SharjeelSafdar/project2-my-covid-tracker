@@ -1,25 +1,25 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .coronaImage {
-    margin: 25px auto;
-    pointer-events: none;
+  margin: 25px auto;
+  pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-    .coronaImage {
-        animation: coronaImage-spin infinite 10s linear;
-    }
+  .coronaImage {
+    animation: coronaImage-spin infinite 10s linear;
+  }
 }
 
 @keyframes coronaImage-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

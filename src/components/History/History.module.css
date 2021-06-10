@@ -1,19 +1,19 @@
 .container {
-    width: 85%;
+  width: 85%;
 }
 
 @media (max-width: 770px) {
-    .container {
-        width: 100%;
-    }
+  .container {
+    width: 100%;
+  }
 }
 
 .heading {
-    margin: 0.5em  0 !important;
+  margin: 0.5em 0 !important;
 }
 
 .flag {
-    height: 30px;
-    margin-left: 15px;
-    pointer-events: none;
+  height: 30px;
+  margin-left: 15px;
+  pointer-events: none;
 }
